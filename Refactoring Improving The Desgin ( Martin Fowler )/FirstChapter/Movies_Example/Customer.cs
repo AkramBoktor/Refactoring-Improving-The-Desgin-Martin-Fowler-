@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies_Example
 {
-   public class Customer
+    public class Customer
     {
         private string name;
         private List<Rental> rentals = new List<Rental>();
@@ -35,29 +35,12 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
             int index = 0;
             var retnals = rentals;
             string result = "Rental Record " + GetName() + "\n";
-            while (index <=  rentals.Count)
+            while (index <= rentals.Count)
             {
                 double thisAmount = 0;
                 Rental each = rentals[index];
 
-                switch (each.GetMovie().GetPriceCode())
-                {
-                    case (int)CategoriesMovies.REGULAR:
-                        thisAmount += 2;
-                        if (each.GetDaysRented() > 2)
-                            thisAmount += (each.GetDaysRented() - 2) * 1.5;
-                        break;
-
-                    case (int)CategoriesMovies.CHILDERNS:
-                        thisAmount += 1.5;
-                        if (each.GetDaysRented() > 3)
-                            thisAmount += (each.GetDaysRented() - 3) * 1.5;
-                        break;
-
-                    case (int)CategoriesMovies.NEW_RELEASE:
-                        thisAmount += (each.GetDaysRented() * 3);
-                        break;
-                }
+                thisAmount = each.GetAmount(each.GetMovie().GetPriceCode(), each);
 
                 // add frequent renter point
                 frequentRenterPoint++;
@@ -75,6 +58,8 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
                        + "Frequesnt enter point";
 
             return result;
-            }
         }
-  }
+
+      
+    }
+}
