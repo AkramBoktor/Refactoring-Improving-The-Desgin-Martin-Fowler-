@@ -40,7 +40,7 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
                 double thisAmount = 0;
                 Rental each = rentals[index];
 
-                thisAmount = each.GetAmount(each.GetMovie().GetPriceCode(), each);
+                thisAmount = each.GetAmount(each.GetMovie().GetPriceCode());
 
                 // add frequent renter point
                 frequentRenterPoint++;

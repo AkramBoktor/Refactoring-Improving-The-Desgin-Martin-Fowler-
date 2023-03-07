@@ -32,24 +32,24 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
         }
 
 
-        public double GetAmount(int priceCode, Rental rental)
+        public double GetAmount(int priceCode)
         {
             double thisAmount = 0;
             if (priceCode == 0)
             {
                 thisAmount += 2;
-                if (rental.GetDaysRented() > 2)
-                    thisAmount += (rental.GetDaysRented() - 2) * 1.5;
+                if (GetDaysRented() > 2)
+                    thisAmount += (GetDaysRented() - 2) * 1.5;
             }
             else if (priceCode == 1)
             {
                 thisAmount += 1.5;
-                if (rental.GetDaysRented() > 3)
-                    thisAmount += (rental.GetDaysRented() - 3) * 1.5;
+                if (GetDaysRented() > 3)
+                    thisAmount += (GetDaysRented() - 3) * 1.5;
             }
             else
             {
-                thisAmount += (rental.GetDaysRented() * 3);
+                thisAmount += (GetDaysRented() * 3);
             }
             return thisAmount;
         }
