@@ -53,5 +53,14 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
             }
             return thisAmount;
         }
+
+        public int getFrequentRenterPoint()
+        {
+            if ((GetMovie().GetPriceCode() == (int)CategoriesMovies.NEW_RELEASE)
+                   && GetDaysRented() > 1)
+                return 2;
+            else
+                return 1;
+        }
     }
 }

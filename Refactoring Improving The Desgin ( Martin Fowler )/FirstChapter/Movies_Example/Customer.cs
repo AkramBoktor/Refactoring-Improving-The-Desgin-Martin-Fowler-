@@ -40,10 +40,8 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
                 Rental each = rentals[index];
 
                 // add frequent renter point
-                frequentRenterPoint++;
-                if ((each.GetMovie().GetPriceCode() == (int)CategoriesMovies.NEW_RELEASE)
-                    && each.GetDaysRented() > 1) frequentRenterPoint++;
-
+                frequentRenterPoint += each.getFrequentRenterPoint();
+               
                 // Show figured for this rental
                 result += "\t" + each.GetMovie().GetTitle() + "\t" + 
                     each.GetAmount(each.GetMovie().GetPriceCode()).ToString()+ "\n";
