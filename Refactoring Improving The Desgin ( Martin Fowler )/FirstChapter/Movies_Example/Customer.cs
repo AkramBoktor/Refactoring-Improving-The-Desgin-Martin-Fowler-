@@ -37,10 +37,7 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
             string result = "Rental Record " + GetName() + "\n";
             while (index <= rentals.Count)
             {
-                double thisAmount = 0;
                 Rental each = rentals[index];
-
-                thisAmount = each.GetAmount(each.GetMovie().GetPriceCode());
 
                 // add frequent renter point
                 frequentRenterPoint++;
@@ -48,8 +45,9 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
                     && each.GetDaysRented() > 1) frequentRenterPoint++;
 
                 // Show figured for this rental
-                result += "\t" + each.GetMovie().GetTitle() + "\t" + thisAmount.ToString() + "\n";
-                totalAmount += thisAmount;
+                result += "\t" + each.GetMovie().GetTitle() + "\t" + 
+                    each.GetAmount(each.GetMovie().GetPriceCode()).ToString()+ "\n";
+                totalAmount += each.GetAmount(each.GetMovie().GetPriceCode());
                 index++;
             }
 
