@@ -32,35 +32,15 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
         }
 
 
+        //TODO We will replace the if statment with polymorphysim condition 
         public double GetAmount(int priceCode)
         {
-            double thisAmount = 0;
-            if (priceCode == 0)
-            {
-                thisAmount += 2;
-                if (GetDaysRented() > 2)
-                    thisAmount += (GetDaysRented() - 2) * 1.5;
-            }
-            else if (priceCode == 1)
-            {
-                thisAmount += 1.5;
-                if (GetDaysRented() > 3)
-                    thisAmount += (GetDaysRented() - 3) * 1.5;
-            }
-            else
-            {
-                thisAmount += (GetDaysRented() * 3);
-            }
-            return thisAmount;
+            return movie.GetTotalCharge(GetDaysRented());
         }
 
         public int getFrequentRenterPoint()
         {
-            if ((GetMovie().GetPriceCode() == (int)CategoriesMovies.NEW_RELEASE)
-                   && GetDaysRented() > 1)
-                return 2;
-            else
-                return 1;
+            return movie.GetTotalFrequentDays(GetDaysRented());
         }
     }
 }

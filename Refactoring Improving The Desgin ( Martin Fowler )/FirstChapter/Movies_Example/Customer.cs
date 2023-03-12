@@ -30,32 +30,43 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 
         public string statement()
         {
-            double totalAmount = 0;
             int frequentRenterPoint = 0;
             int index = 0;
-            var retnals = rentals;
+            var retnalsList = rentals;
             string result = "Rental Record " + GetName() + "\n";
-            while (index <= rentals.Count)
+            while (index <= retnalsList.Count)
             {
-                Rental each = rentals[index];
+                Rental each = retnalsList[index];
 
                 // add frequent renter point
                 frequentRenterPoint += each.getFrequentRenterPoint();
                
                 // Show figured for this rental
                 result += "\t" + each.GetMovie().GetTitle() + "\t" + 
-                    each.GetAmount(each.GetMovie().GetPriceCode()).ToString()+ "\n";
-                totalAmount += each.GetAmount(each.GetMovie().GetPriceCode());
+                    each.GetAmount(each.GetDaysRented()).ToString()+ "\n";
                 index++;
             }
 
-            result += "Amount owed is " + totalAmount.ToString() + "\n"
+            result += "Amount owed is " + GetToltalAmount() + "\n"
                        + "you earned " + frequentRenterPoint.ToString()
                        + "Frequesnt enter point";
 
             return result;
         }
 
-      
+
+        private double GetToltalAmount()
+        {
+            var retnalsList = rentals;
+            int index = 0;
+            double result = 0;
+            while (index <= retnalsList.Count)
+            {
+                Rental each = retnalsList[index];
+                result += each.GetAmount(each.GetMovie().GetPriceCode());
+            }
+
+            return result;
+        }
     }
 }
