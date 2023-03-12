@@ -8,17 +8,17 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 {
    public class Movie
     {
-        private int priceCode;
+        private Price price;
         private string title;
         public Movie(string _title , int _priceCode)
         {
             title = _title;
-            priceCode = _priceCode;
+            SetPriceCode(_priceCode);
         }
 
         public int GetPriceCode()
         {
-            return priceCode;
+            return price.getPriceCode();
         }
 
         public string GetTitle()
@@ -33,39 +33,21 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 
         public void SetPriceCode(int _priceCode)
         {
-            priceCode = _priceCode;
+            if (_priceCode == 0) price = new ChildernPrice();
+            else if (_priceCode == 1) price = new RegularPrice();
+            else if (_priceCode == 2) price = new NewReleasePrice();
+            else throw new ArgumentException("Incorrect price code");
         }
 
         //TODO We will replace the if statment with polymorphysim condition 
         public double GetTotalCharge(int daysRented)
         {
-            double thisAmount = 0;
-            if (priceCode == 0)
-            {
-                thisAmount += 2;
-                if (daysRented > 2 )
-                    thisAmount += (daysRented - 2) * 1.5;
-            }
-            else if (priceCode == 1)
-            {
-                thisAmount += 1.5;
-                if (daysRented > 3)
-                    thisAmount += (daysRented - 3) * 1.5;
-            }
-            else
-            {
-                thisAmount += (daysRented * 3);
-            }
-            return thisAmount;
+            return price.GetCharge(daysRented);
         }
 
         public int GetTotalFrequentDays(int days)
         {
-            if ((GetPriceCode() == (int)CategoriesMovies.NEW_RELEASE)
-                  && days > 1)
-                return 2;
-            else
-                return 1;
+            return price.GetFrequentPoint(days);
         }
     }
 }
