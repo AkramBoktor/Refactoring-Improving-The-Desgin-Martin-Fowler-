@@ -30,3 +30,7 @@ when you are close to the deadline . At this point the productivity again from r
 2 - Long Mehthod
 . The object programs that live best and longest are those with short methods .
 
+3 - Large Class
+. when a class is trying to doo too much , it often show ups as too many instance variable => when class has too many instance variables , duplicated code can't be far behing.
+
+
