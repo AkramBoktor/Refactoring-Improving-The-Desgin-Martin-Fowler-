@@ -33,4 +33,21 @@ when you are close to the deadline . At this point the productivity again from r
 3 - Large Class
 . when a class is trying to doo too much , it often show ups as too many instance variable => when class has too many instance variables , duplicated code can't be far behing.
 
+4 - Long Parameter List 
+. we were taught to pass in as parameter every thing needed by routine . this was understandable because the alternative was global data and global data is evil and usually painful  . object change this situation because if you don't have something you need you can always as another object to get it for you 
+thus with objects you don't pass in everything the method needs
+In object Oriented Programs parameter lists tend to be mush smaller than in traditional programs 
+
+5 - Divergent Class
+we structure our software to make change easier . after all, software is meant to be soft . when we make a change we want to able to jump ti a single clear point in the system and make the change 
+
+6 - Feature Envy
+. The whole point of objects is that they are a technique to package data with the process used on that data . 
+A **Classic Smell is a method that seems more interested more other than the one actually is in**
+
+7 - Data Clumps
+. Data items tends to be like childern ; they enjoy hanging aroud in groups together.  often you see three or four data items together in lots of places 
+
+
+
 
