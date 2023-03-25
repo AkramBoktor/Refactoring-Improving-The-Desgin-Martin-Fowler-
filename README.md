@@ -64,5 +64,7 @@ the instance of one hierarchy refer to instance of one hierarchy refer to instan
 You see message chain when a clinet asks one object for another object , which the client then asks for yet another object , which the clien then asks for yet another another object .
 Navigation this way means the client is coupled to the structure of the navigation 
 
-
+11 - Middle Man 
+. one of the prime features of object is encapsulation - hidding internal details from the reset of the world . 
+Encapsulation often come with delegation . 
 
