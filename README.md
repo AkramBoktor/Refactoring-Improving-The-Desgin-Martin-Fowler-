@@ -51,8 +51,9 @@ A **Classic Smell is a method that seems more interested more other than the one
 8 - Switch Statment 
 one of the most obvious symptoms of object oriented code is it's comparative lack of switch ( Or case ) statment . the problem of switch statment is essentially that duplication . often you find many switch statment in many places => so if you add a new clause to the switch you have find all these switch statment and change them . the object oriented notion of polymporphysim gives you an elegant way to deal with this problem 
 
-** Most times you see a switch statment you should consider polymorphsim ** 
-** the problem is where the polymorphysim gives **
+**Most times you see a switch statment you should consider polymorphsim** 
+**the problem is where the polymorphysim gives**
+
 
 
 
