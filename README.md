@@ -54,6 +54,15 @@ one of the most obvious symptoms of object oriented code is it's comparative lac
 **Most times you see a switch statment you should consider polymorphsim** 
 **the problem is where the polymorphysim gives**
 
+9 - Parallel Inheritance Hierarchies . 
+. Every time you make a subclass of one class ,  you also have to make a subclass of another . you can recongize this smell becasue the prefix of the class 
+name in one hirerchy are the same as the prefix in another hirearchy .
+** To Prevent this problem ** 
+the instance of one hierarchy refer to instance of one hierarchy refer to instances of the other . 
+**Using Move Method & Move Field prevent this happened**
+10 - Message Chain 
+You see message chain when a clinet asks one object for another object , which the client then asks for yet another object , which the clien then asks for yet another another object .
+Navigation this way means the client is coupled to the structure of the navigation 
 
 
 
