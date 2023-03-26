@@ -68,3 +68,7 @@ Navigation this way means the client is coupled to the structure of the navigati
 . one of the prime features of object is encapsulation - hidding internal details from the reset of the world . 
 Encapsulation often come with delegation . 
 
+12 - Refused Bequest 
+Subclasses get to inherit the methods and data of their parents . but what if they don't want or need what are given ? they are given all theses great gifts and pic just a few to play with .
+So you need to create new sibling class and use **Push Down Method** and **Push Down Fields**
+to push all unused methods to the sibling .
