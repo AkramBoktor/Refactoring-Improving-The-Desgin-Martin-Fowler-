@@ -96,10 +96,15 @@ this isn't backward as its sound . by writing the test you are asking yourself w
 
 # Cahpter 5 : Toward a catalog of refactorings 
 Format of refactorings .  each refactoring has five parts as follow
+
 1 - **Name** : the name is important to building vocabulary of refactorings .
-2 - **Short Summary**: Following the name with a short summary if the situation in which you beed the refactorung and a sumaary of what the refactoring does . this help you to find the refactoring moew quickly .
+
+2 - **Short Summary** : Following the name with a short summary if the situation in which you beed the refactorung and a sumaary of what the refactoring does . this help you to find the refactoring moew quickly .
+
 3 - **Motivation** : the motivation describes why the refactoring should be done and describe circumstances in which it should't be done .
-4 - **Mechanics**: step by step description of how to carry out the refactorying 
+
+4 - **Mechanics** : step by step description of how to carry out the refactorying
+
 5 - **The examples** : show a very simple use of the refactoring to illustrate how it works .
 
 
