@@ -74,15 +74,19 @@ So you need to create new sibling class and use **Push Down Method** and **Push 
 to push all unused methods to the sibling .
 
 # Chapter 4 : Building Tests
-if you want to refactor you ,  the essential precondition is having solid tests . I don't see as a disadvantage. I have found that writing good tests greatly speeds my programming even if I'm not refactoring .
-* every developer spend much time to find the bug fixing the bug not take much time as finding it . and when you fix the bug maybe happened another bug in your system and you finds it while time .
+if you want to refactor you ,  the essential precondition is having solid tests . 
+I don't see as a disadvantage. I have found that writing good tests greatly speeds my programming even if I'm not refactoring .
+
+every developer spend much time to find the bug fixing the bug not take much time as finding it . and when you fix the bug maybe happened another bug in your system and you finds it while time .
+
 so each class should have it's own method ( called test ) .
 so i started to run tests every time i compiled . soon i began to notice my productivity 
 had shot upward i realized that I wasn't spending so much time debugging if I added a bug that was caught by a previous test . it would show up as soon as possible 
 not just had i built self-testing classes , but by running them frequently i had powerful bug detector .
 with the time i'm being more aggressive about the writing unit tests immediately not waiting for the end to increment , i would add the tests immediately after writing a bit function .
+
 every day i would add two couple of features and the tests to test them , these days I hardly ever spend more than a few minutes debugging .
-*Note : One of the most useful times to write tests is before you start programming . when you add new features just begin writing the test.**
+**Note : One of the most useful times to write tests is before you start programming . when you add new features just begin writing the test.**
 this isn't backward as its sound . by writing the test you are asking yourself what  need to be done to add the function .
 
 **Differnet between unit test and functionality test**
