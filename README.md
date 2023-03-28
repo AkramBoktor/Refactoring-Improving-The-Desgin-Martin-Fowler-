@@ -93,3 +93,14 @@ this isn't backward as its sound . by writing the test you are asking yourself w
 **unit test** : write unit test eo improve the productivity as programmer . making the quality assurance department happy . Each test class works within a single package . it tests the interfaces to other package but beyond that it assumes the rest just works .
 **Functional Test**: it's used to check the software as whole works . they provide quality assurance to the customer and don't care about programmer productivity . it's treat the whole system as black box as much as possible 
 **Note : when you get a bug start to write unit test that expose the bug**
+
+# Cahpter 5 : Toward a catalog of refactorings 
+Format of refactorings .  each refactoring has five parts as follow
+1 - **Name** : the name is important to building vocabulary of refactorings .
+2 - **Short Summary**: Following the name with a short summary if the situation in which you beed the refactorung and a sumaary of what the refactoring does . this help you to find the refactoring moew quickly .
+3 - **Motivation** : the motivation describes why the refactoring should be done and describe circumstances in which it should't be done .
+4 - **Mechanics**: step by step description of how to carry out the refactorying 
+5 - **The examples** : show a very simple use of the refactoring to illustrate how it works .
+
+
+
