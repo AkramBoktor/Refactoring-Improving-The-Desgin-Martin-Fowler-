@@ -107,5 +107,59 @@ Format of refactorings .  each refactoring has five parts as follow
 
 5 - **The examples** : show a very simple use of the refactoring to illustrate how it works .
 
+# Cahpter 6 Compassing Methods
+*Almost all the time the problems come from methods that are too long*
+**Extract Method** : which takes a clump of code and turns it into its own method 
+**Inline Method** : The opposite you take a method call abd replace it with the body of the code 
+
+```ruby
+ public class Extract_Method
+    {
+        public void Main()
+        {
+            printOwing(100);
+            printOwingRefactor(1010);
+        }
+
+
+        #region Before Extract Method
+        public void printOwing(double amount)
+        {
+            printBanner();
+            Console.WriteLine("name " + "Akram");
+            Console.WriteLine("Amount " + amount);
+        }
+
+        private void printBanner()
+        {
+            Console.WriteLine("*** Banner ***");
+        }
+        #endregion
+
+        #region With Extract Method 
+
+        public void printOwingRefactor(double amount)
+        {
+            printBannerRefactor();
+            printDetailsRefactor(amount);
+
+
+        }
+
+        private void printBannerRefactor()
+        {
+            Console.WriteLine("*** Banner Refactor ***");
+        }
+
+        private void printDetailsRefactor(double amount)
+        {
+            Console.WriteLine("name Refactor " + "Akram Refactor");
+            Console.WriteLine("Amount Refactor " + amount);
+        }
+        #endregion
+    }
+  ```    
+   
+    
 
 
