@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refactoring_Improving_The_Desgin___Martin_Fowler__.Chapter6;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,10 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
     {
         static void Main(string[] args)
         {
-            string message = "Hello World!!";
-
-            Console.WriteLine(message);
+            #region Extract Method
+            Extract_Method extract_Method = new Extract_Method();
+            extract_Method.Main(); 
+            #endregion
         }
     }
 }

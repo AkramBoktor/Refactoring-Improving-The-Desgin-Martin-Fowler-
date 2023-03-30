@@ -6,8 +6,4 @@
     <RootNamespace>Refactoring_Improving_The_Desgin___Martin_Fowler__</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Chapter6\" />
-  </ItemGroup>
-
 </Project>
