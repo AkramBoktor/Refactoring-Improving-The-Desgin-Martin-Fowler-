@@ -166,9 +166,12 @@ Format of refactorings .  each refactoring has five parts as follow
   1 - it increases the chances that other methods can use a method when the methid is finely gained 
   2 - it allows the higher-level methods to read more like series of comments
   
-  *Mechanics**
+  **Mechanics**
   1 - Create a new method , and name it after the intention of the method ( name it by **what** it does , not by **how** it it does )
   -> if the code you want to extract is very very simple , such as single message or function call , you should extract it if the name of the new method will **Reveal the intention** of the code in a better way **if you can't come up with a more meaningful name , don't extract the code .**
   
+  2 - Copy the extracted code from the source method into the new target method .
+  3 - scan the extracted code for references to any variables that are local in scope to the source method . these are local variables and parameters to the method .
+  4 - see whether any temporary variables are used only within this extracted code . if so declear them as temporary variables
 
 
