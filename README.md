@@ -171,7 +171,19 @@ Format of refactorings .  each refactoring has five parts as follow
   -> if the code you want to extract is very very simple , such as single message or function call , you should extract it if the name of the new method will **Reveal the intention** of the code in a better way **if you can't come up with a more meaningful name , don't extract the code .**
   
   2 - Copy the extracted code from the source method into the new target method .
+  
   3 - scan the extracted code for references to any variables that are local in scope to the source method . these are local variables and parameters to the method .
+  
   4 - see whether any temporary variables are used only within this extracted code . if so declear them as temporary variables
 
-
+  5 - pass into the target method as parametrs local scope variables that are read from the extracted method .
+  
+  6 - compile when you have dealt with all the locally scoped variables .
+  
+  7 - Replace the extracted code in the source methid with a call to the target method .
+  
+  -> if you have moved any temporary variables over the target method ,  look to see whether they were declared outside of the extracted code , if so you can now remove the declearation
+  
+  8 - Compile test
+  
+  
