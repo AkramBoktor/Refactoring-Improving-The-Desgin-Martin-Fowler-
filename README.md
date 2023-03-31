@@ -161,5 +161,14 @@ Format of refactorings .  each refactoring has five parts as follow
   ```    
    
     
+  **Motivation** : Extract Method is one of the most common refactorings i do . I look at the method that is too long or look at code that needs a comment to understand its purpose . I then turn that fragement of code into its own method .
+  **Prefer** : - Short - well named method for serval reasons 
+  1 - it increases the chances that other methods can use a method when the methid is finely gained 
+  2 - it allows the higher-level methods to read more like series of comments
+  
+  *Mechanics**
+  1 - Create a new method , and name it after the intention of the method ( name it by **what** it does , not by **how** it it does )
+  -> if the code you want to extract is very very simple , such as single message or function call , you should extract it if the name of the new method will **Reveal the intention** of the code in a better way **if you can't come up with a more meaningful name , don't extract the code .**
+  
 
 
