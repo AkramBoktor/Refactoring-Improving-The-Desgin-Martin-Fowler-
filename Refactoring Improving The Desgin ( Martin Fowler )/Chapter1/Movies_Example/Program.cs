@@ -20,6 +20,9 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 
             LocalVariables localVariables = new LocalVariables();
             localVariables.Main();
+
+            InlineMethod inlineMethod = new InlineMethod();
+            inlineMethod.Main();
             #endregion
         }
     }
