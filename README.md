@@ -243,3 +243,9 @@ Format of refactorings .  each refactoring has five parts as follow
 4 - Compile and test . 
 
 5 - remove the method definition .
+
+**Replace Temp With Query** :
+
+You are using a temporary variable to hold the result of an expression. 
+
+*Extract the expression into a method . replace all reference to the temp with the new method . the new method can then br used in other methods.
