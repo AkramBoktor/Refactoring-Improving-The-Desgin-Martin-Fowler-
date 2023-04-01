@@ -191,6 +191,7 @@ Format of refactorings .  each refactoring has five parts as follow
   Local variables are only in scope in that method so when i use **Extract Method** these variables cause extra work . In some case they even prevent me from doing the refactoring at all.
   
 **Inline Method** :  A method's body is just as clear as its name.
+
 *put the method's body into the body of its callers and remove the method .
 
 ```ruby
@@ -229,4 +230,16 @@ Format of refactorings .  each refactoring has five parts as follow
     }
 ```
 
+**Mechanics**
 
+1 - Check that the method isn't polymorphic 
+
+*Don't inline if subclass ovrerride the method ; they cann't override a methid that isn;t there 
+
+2 - find all calls to the method 
+
+3 - Replace each call with the method body . 
+
+4 - Compile and test . 
+
+5 - remove the method definition .
