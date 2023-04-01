@@ -186,4 +186,7 @@ Format of refactorings .  each refactoring has five parts as follow
   
   8 - Compile test
   
+  **using local variables when make Extract Method** 
+  the problem is local variables : parameter passed into the original method and temporaries declared within the original method .
+  Local variables are only in scope in that method so when i use **Extract Method** these variables cause extra work . In some case they even prevent me from doing the refactoring at all.
   
