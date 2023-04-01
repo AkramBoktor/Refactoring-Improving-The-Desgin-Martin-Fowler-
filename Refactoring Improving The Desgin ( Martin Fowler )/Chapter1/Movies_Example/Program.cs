@@ -23,6 +23,9 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 
             InlineMethod inlineMethod = new InlineMethod();
             inlineMethod.Main();
+
+            ReplaceTempWithQuery replaceTempWithQuery = new ReplaceTempWithQuery();
+            replaceTempWithQuery.Main();
             #endregion
         }
     }
