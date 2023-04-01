@@ -13,7 +13,10 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
         {
             #region Extract Method
             Extract_Method extract_Method = new Extract_Method();
-            extract_Method.Main(); 
+            extract_Method.Main();
+
+            NoLoaclVariables noLoaclVariables = new NoLoaclVariables();
+            noLoaclVariables.Main();
             #endregion
         }
     }
