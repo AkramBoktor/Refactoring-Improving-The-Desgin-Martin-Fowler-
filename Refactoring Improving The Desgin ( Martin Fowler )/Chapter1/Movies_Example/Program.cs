@@ -17,6 +17,9 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 
             NoLoaclVariables noLoaclVariables = new NoLoaclVariables();
             noLoaclVariables.Main();
+
+            LocalVariables localVariables = new LocalVariables();
+            localVariables.Main();
             #endregion
         }
     }
