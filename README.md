@@ -1,4 +1,4 @@
-# Refactoring-Improving-The-Desgin-Martin-Fowler
+# Refactoring Improving The Desgin ( Martin Fowler )
 # Chapter 2 ( Principle in Refactoring )
 - Refactor improves the deso=ign of the software
 - Refactor makes software easier to understand
