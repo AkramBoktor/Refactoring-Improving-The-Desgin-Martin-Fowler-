@@ -20,7 +20,7 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.Chapter6
         public double CalculateMethod()
         {
             ///// Before Replace Temp With Query
-            Console.WriteLine("*** Before Replace Temp With Queryr ***");
+            Console.WriteLine("*** Before Replace Temp With Query ***");
 
             double basePrice = 10 * 5;
             if (basePrice > 1000)
@@ -35,7 +35,7 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.Chapter6
         public double CalculateMethodAfter()
         {
             ///// Before Replace Temp With Query
-            Console.WriteLine("*** After Replace Temp With Queryr ***");
+            Console.WriteLine("*** After Replace Temp With Query ***");
 
 
             if (basePrice() > 1000)

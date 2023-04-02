@@ -26,6 +26,10 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 
             ReplaceTempWithQuery replaceTempWithQuery = new ReplaceTempWithQuery();
             replaceTempWithQuery.Main();
+
+            ExampleExtractMethod exampleExtractMethod = new ExampleExtractMethod();
+            exampleExtractMethod.Main();
+
             #endregion
         }
     }
