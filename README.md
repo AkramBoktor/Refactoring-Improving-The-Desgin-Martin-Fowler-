@@ -298,3 +298,42 @@ public class ReplaceTempWithQuery
     }
 ```
 
+**Introduce Explaining Variable**
+
+*You have a complicated experssion 
+put the result of the expression , or parts of the experssion , in a temprary variable with a name that explain the purpose 
+
+```ruby
+if(( platform.toUppercase().index("Mac") > -1 ) && ( browser.toUppercase().index("IE") > -1 ) && WasIntialize() && resize > 0 )
+{
+ // Do Something
+}
+
+we will change it as 
+
+bool isMac = platform.toUppercase().index("Mac") > -1 ;
+bool isBrowser = browser.toUppercase().index("IE") > -1 ;
+bool wasResize = WasIntialize() && resize > 0 ;
+
+if( isMac && isBrowser && wasResize){
+  //Do Something
+}
+```
+**Motivation**
+
+Expression can become more complex and hard to read. In such situation temporary variables can be helpful to break down the expression into something more manageable.
+
+**Mechanics**
+
+1 - Decleare a final temporary variable , and set it to the result of part of the complex expression 
+
+2 - Replace the result part of the expression with the value of the temp .
+
+=> of the result part of the expression is repeated. you can replace the repeats one at a time .
+
+3 - compile and test 
+
+4 - Repeat for other parts of the expression . 
+
+
+
