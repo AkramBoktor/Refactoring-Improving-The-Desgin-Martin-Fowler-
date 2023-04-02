@@ -1,4 +1,4 @@
-# Refactoring-Improving-The-Desgin-Martin-Fowler
+# Refactoring Improving The Desgin ( Martin Fowler )
 # Chapter 2 ( Principle in Refactoring )
 - Refactor improves the deso=ign of the software
 - Refactor makes software easier to understand
@@ -249,3 +249,133 @@ Format of refactorings .  each refactoring has five parts as follow
 You are using a temporary variable to hold the result of an expression. 
 
 **Extract the expression into a method . replace all reference to the temp with the new method . the new method can then br used in other methods.
+
+```ruby
+public class ReplaceTempWithQuery
+    {
+        public void Main()
+        {
+            Console.WriteLine(CalculateMethod());
+            Console.WriteLine(CalculateMethodAfter());
+        }
+
+        #region Before Replace Temp With Query
+        // Extract the expression into a method . replace all reference to the temp with the new method .
+        // the new method can then br used in other methods.
+        public double CalculateMethod()
+        {
+            ///// Before Replace Temp With Query
+            Console.WriteLine("*** Before Replace Temp With Queryr ***");
+
+            double basePrice = 10 * 5;
+            if (basePrice > 1000)
+                return basePrice * 10;
+            else
+                return basePrice * 0;
+        }
+        #endregion
+
+        #region After Replace Temp With Query
+        // this simple example case extract the method (110) is trivially easy 
+        public double CalculateMethodAfter()
+        {
+            ///// Before Replace Temp With Query
+            Console.WriteLine("*** After Replace Temp With Queryr ***");
+
+
+            if (basePrice() > 1000)
+                return basePrice() * 10;
+            else
+                return basePrice() * 0;
+        }
+
+        private double basePrice()
+        {
+            return 10 * 5;
+
+        }
+        #endregion
+    }
+```
+
+**Introduce Explaining Variable**
+
+*You have a complicated experssion 
+put the result of the expression , or parts of the experssion , in a temprary variable with a name that explain the purpose 
+
+```ruby
+if(( platform.toUppercase().index("Mac") > -1 ) && ( browser.toUppercase().index("IE") > -1 ) && WasIntialize() && resize > 0 )
+{
+ // Do Something
+}
+
+we will change it as 
+
+bool isMac = platform.toUppercase().index("Mac") > -1 ;
+bool isBrowser = browser.toUppercase().index("IE") > -1 ;
+bool wasResize = WasIntialize() && resize > 0 ;
+
+if( isMac && isBrowser && wasResize){
+  //Do Something
+}
+```
+**Motivation**
+
+Expression can become more complex and hard to read. In such situation temporary variables can be helpful to break down the expression into something more manageable.
+
+**Mechanics**
+
+1 - Decleare a final temporary variable , and set it to the result of part of the complex expression 
+
+2 - Replace the result part of the expression with the value of the temp .
+
+=> of the result part of the expression is repeated. you can replace the repeats one at a time .
+
+3 - compile and test 
+
+4 - Repeat for other parts of the expression . 
+
+
+```ruby
+ public class ExampleExtractMethod
+    {
+        public void Main()
+        {
+            Console.WriteLine("ExampleExtractMethod " + Price());
+            Console.WriteLine("ExampleExtractMethod " + PriceAfter());
+        }
+
+
+        #region Before Extract Method
+        public double Price()
+        {
+            return 10 * 5 - Math.Max(0, 10 - 500) * 5 * 0.05 + Math.Min(10 * 5 * 0.1, 1000);
+        }
+        #endregion
+
+        #region With Extract Method 
+
+        public double PriceAfter()
+        {
+            return basePrice() - quantityPrice() + shipping();
+
+
+        }
+
+        private double basePrice()
+        {
+            return 10 * 5;
+        }
+
+        private double quantityPrice()
+        {
+           return Math.Max(0, 10 - 500) * 5 * 0.05;
+        }
+        private double shipping()
+        {
+            return Math.Min(10 * 5 * 0.1, 1000);
+        }
+        #endregion
+    }
+    
+```
