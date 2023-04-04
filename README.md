@@ -380,7 +380,7 @@ Expression can become more complex and hard to read. In such situation temporary
     
 ```
 
-#ٌRemove Assignments to parameters
+#ٌ Remove Assignments to parameters
 
 *The code assigns to a parameter use a temporary variable instead.
 
