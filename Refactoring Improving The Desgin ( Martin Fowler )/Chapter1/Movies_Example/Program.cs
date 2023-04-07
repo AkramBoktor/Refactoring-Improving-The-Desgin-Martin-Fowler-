@@ -30,6 +30,8 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
             ExampleExtractMethod exampleExtractMethod = new ExampleExtractMethod();
             exampleExtractMethod.Main();
 
+            Substitute_Algorithm substitute_Algorithm = new Substitute_Algorithm();
+            substitute_Algorithm.Main();
             #endregion
         }
     }
