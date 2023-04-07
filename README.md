@@ -453,3 +453,67 @@ if(inputval > 50 ) result = -2 ;
         #endregion
     }
 ```
+
+# Move Method
+
+* A method is,or will be, using or used by more features of another class than the class on which it is defined .
+* Create a new method with a similiar body in the class it uses most . Either turn the hold method into a simple delegation , or remove it altogether .
+
+**Motivation**
+Moving methods is the bread and butter of refactoring . i move methods when classes have too much behavior oe when classes are collaboration too much and are too highly coupled . by moving methods around i can make the classes simpler and they end up being more crisp implementation of a set of responsibilites .
+
+```ruby
+class Acount ... 
+{
+     private AccountType _type;
+     private int _daysOverdrawn;
+
+     double overdraftCharge(){
+     if(_type.isPremium()){
+     double result = 10;
+     if(_daysOverdrawn > 7 ) result+= _daysOverdrawn - 7 ) * 0.85 ;
+     return result ;
+     }
+     else return _daysOverdrawn * 1.75 ;
+     }
+
+     double bankCharge(){
+     double result = 4.5 ;
+     if(_dayOverdrawn > 0 ) result += overdraftCharge();
+     return result;
+     }
+}
+
+/* After Using Move Method approch */
+class AcountType ... 
+{
+     private AccountType _type;
+     private int _daysOverdrawn;
+
+     double overdraftCharge(int daysOverdrawn){
+     if(**isPremium()**){
+     double result = 10;
+     if(**daysOverdrawn** > 7 ) result+= **daysOverdrawn** - 7 ) * 0.85 ;
+     return result ;
+     }
+     else return _daysOverdrawn * 1.75 ;
+     }
+
+}
+
+the super class will be 
+class Account...{
+     private int _daysOverdrawn;
+
+   double overdraftCharge(){
+ return _type.overdraftCharge(_daysOverdrawn)
+  }
+  
+    double bankCharge(){
+     double result = 4.5 ;
+     if(_dayOverdrawn > 0 ) result += _type.overdraftCharge(_daysOverdrawn);
+     return result;
+     }
+}
+```
+
