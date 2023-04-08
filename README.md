@@ -604,15 +604,13 @@ public class Account {
 That way I only need to do the redirection for accessors : 
 
 ``` ruby
-
 double intersetForAmountAndDays (double amount , int days) {
-   return getInterestRate() * amount * days / 365;
+   return getInterestRate() * amount * days / 365 ;
 }
 
 private void setIntersetRate (double arg) {
          _type.setInterestRate(arg)  ;      
 }
-
 private double getIntersetRate () {
      return _type.setInterestRate(arg)  ;      
 }
