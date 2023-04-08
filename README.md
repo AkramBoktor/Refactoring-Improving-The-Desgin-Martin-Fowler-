@@ -523,10 +523,97 @@ create a new field in the target class and change all it's users
 
 **Mechanics**
 1 - if the field is public , use Encapsulate field 
+
 2 - compile and test
+
 3 - create a field in the target class with getting and setting method
+
 4 - compile the target class 
+
 5 - Determine how to reference the target object from the source 
+
 6 - Remove the field on the source class
-7 - replace all reference to the sorce field with regerence to appropriate method on the target 
+
+7 - replace all reference to the sorce field with regerence to appropriate method on the target
+
 8 - compile and test 
+
+# Example
+
+```ruby
+Public class Account {
+  
+  private AccountType _type;
+  private double _interestRate
+  
+  public double intersetForAmount_days(double amount , int days){
+   
+           return _interestRate * amount * days / 365 ;
+  }
+}
+```
+I want to remove interest rate field to the account type . there are serveral method with the reference of which *interestForAmount_days* is one example .
+
+``` ruby
+public class AccountType {
+  
+     private double _interestRate ;
+     
+     void setInterestRate (double args ){
+        
+          _interestRate = args;
+    }
+    
+    double getIntersetRate() {
+       _return _intersertRate;
+    }
+}
+```
+I can compile the new class at this point . 
+No I redirect the methods froms the account class to use the account type and remove the interest rate field in the account . I must remove the field to be sure that the redirection is actually happening . this way the compiler helps spots and method I failed to redirect .
+
+```ruby
+    private double _interest;
+    
+    double interestForAmount_days ( double amount , int days) {
+      return _type.getIntersetRate() * amount * days / 356 ;
+    }
+```
+# Example: Using Self-Encapsulation 
+if alot of methods use the interest rate field , i might start by using Self-Encapsulation field
+
+``` ruby
+public class Account {
+       
+        private AccountType _type;
+        private double _interestRate;
+
+        double intersetForAmount_days ( double amount , int days ) {
+             return getIntersetRate() * amount * days / 365;
+        }
+
+        private void setIntersetRate ( double arg ){
+          _interestRate = arg;
+       }
+        private double setIntersetRate (){
+          return _interserRate ;
+       }
+ }
+
+```
+That way I only need to do the redirection for accessors : 
+
+``` ruby
+
+double intersetForAmountAndDays (double amount , int days) {
+   return getInterestRate() * amount * days / 365;
+}
+
+private void setIntersetRate (double arg) {
+         _type.setInterestRate(arg)  ;      
+}
+
+private double getIntersetRate () {
+     return _type.setInterestRate(arg)  ;      
+}
+```
