@@ -517,3 +517,16 @@ class Account...{
 ```
 Once I've replaced all the callers , i can remove the method decleration in account . i can compile and test after each removal , or do then in a batch . if the method isn't private , I need to look for other classes that use this method . In a strongly typed language , the compilation after removal of the source decleration finds anything missed .
 
+# Move Field
+A field is , or will be used by another class more than the class on which it's defined 
+create a new field in the target class and change all it's users
+
+**Mechanics**
+1 - if the field is public , use Encapsulate field 
+2 - compile and test
+3 - create a field in the target class with getting and setting method
+4 - compile the target class 
+5 - Determine how to reference the target object from the source 
+6 - Remove the field on the source class
+7 - replace all reference to the sorce field with regerence to appropriate method on the target 
+8 - compile and test 
