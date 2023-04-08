@@ -471,7 +471,7 @@ class Acount ...
      double overdraftCharge(){
      if(_type.isPremium()){
      double result = 10;
-     if(_daysOverdrawn > 7 ) result+= _daysOverdrawn - 7 ) * 0.85 ;
+     if(_daysOverdrawn > 7 ) result+= _daysOverdrawn - 7  * 0.85 ;
      return result ;
      }
      else return _daysOverdrawn * 1.75 ;
@@ -479,7 +479,7 @@ class Acount ...
 
      double bankCharge(){
      double result = 4.5 ;
-     if(_dayOverdrawn > 0 ) result += overdraftCharge();
+     if(_daysOverdrawn > 0 ) result += overdraftCharge();
      return result;
      }
 }
@@ -487,13 +487,12 @@ class Acount ...
 /* After Using Move Method approch */
 class AcountType ... 
 {
-     private AccountType _type;
      private int _daysOverdrawn;
 
      double overdraftCharge(int daysOverdrawn){
      if(**isPremium()**){
      double result = 10;
-     if(**daysOverdrawn** > 7 ) result+= **daysOverdrawn** - 7 ) * 0.85 ;
+     if(**daysOverdrawn** > 7 ) result+= **daysOverdrawn** - 7  * 0.85 ;
      return result ;
      }
      else return _daysOverdrawn * 1.75 ;
@@ -516,4 +515,5 @@ class Account...{
      }
 }
 ```
+Once I've replaced all the callers , i can remove the method decleration in account . i can compile and test after each removal , or do then in a batch . if the method isn't private , I need to look for other classes that use this method . In a strongly typed language , the compilation after removal of the source decleration finds anything missed .
 
