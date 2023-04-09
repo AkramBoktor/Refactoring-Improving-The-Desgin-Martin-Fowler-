@@ -517,3 +517,121 @@ class Account...{
 ```
 Once I've replaced all the callers , i can remove the method decleration in account . i can compile and test after each removal , or do then in a batch . if the method isn't private , I need to look for other classes that use this method . In a strongly typed language , the compilation after removal of the source decleration finds anything missed .
 
+# Move Field
+A field is , or will be used by another class more than the class on which it's defined 
+create a new field in the target class and change all it's users
+
+**Mechanics**
+1 - if the field is public , use Encapsulate field 
+
+2 - compile and test
+
+3 - create a field in the target class with getting and setting method
+
+4 - compile the target class 
+
+5 - Determine how to reference the target object from the source 
+
+6 - Remove the field on the source class
+
+7 - replace all reference to the sorce field with regerence to appropriate method on the target
+
+8 - compile and test 
+
+# Example
+
+```ruby
+Public class Account {
+  
+  private AccountType _type;
+  private double _interestRate
+  
+  public double intersetForAmount_days(double amount , int days){
+   
+           return _interestRate * amount * days / 365 ;
+  }
+}
+```
+I want to remove interest rate field to the account type . there are serveral method with the reference of which *interestForAmount_days* is one example .
+
+``` ruby
+public class AccountType {
+  
+     private double _interestRate ;
+     
+     void setInterestRate (double args ){
+        
+          _interestRate = args;
+    }
+    
+    double getIntersetRate() {
+       _return _intersertRate;
+    }
+}
+```
+I can compile the new class at this point . 
+No I redirect the methods froms the account class to use the account type and remove the interest rate field in the account . I must remove the field to be sure that the redirection is actually happening . this way the compiler helps spots and method I failed to redirect .
+
+```ruby
+    private double _interest;
+    
+    double interestForAmount_days ( double amount , int days) {
+      return _type.getIntersetRate() * amount * days / 356 ;
+    }
+```
+# Example: Using Self-Encapsulation 
+if alot of methods use the interest rate field , i might start by using Self-Encapsulation field
+
+``` ruby
+public class Account {
+       
+        private AccountType _type;
+        private double _interestRate;
+
+        double intersetForAmount_days ( double amount , int days ) {
+             return getIntersetRate() * amount * days / 365;
+        }
+
+        private void setIntersetRate ( double arg ){
+          _interestRate = arg;
+       }
+        private double setIntersetRate (){
+          return _interserRate ;
+       }
+ }
+
+```
+That way I only need to do the redirection for accessors : 
+
+``` ruby
+double intersetForAmountAndDays (double amount , int days) {
+   return getInterestRate() * amount * days / 365 ;
+}
+
+private void setIntersetRate (double arg) {
+         _type.setInterestRate(arg)  ;      
+}
+private double getIntersetRate () {
+     return _type.setInterestRate(arg)  ;      
+}
+```
+
+# Extract Class
+ - You have one class doing work that should be done by two .
+  Create a new class and move the relevant fields and methods from the old class into the new class .
+  
+  **Mechanics**
+  * Decide how to spilt the responsibilites of the class
+  * Create a new class to express the split off resposibilites 
+  -> if the responsibilites of the old class no longer match its name rename the old class
+  * Make link between the old to the new class
+  -> you may need a two way link but don't make the back link until you find you need it .
+  * Use Move field on each field you wish to move .
+  * Compile and test after each move .
+  * Use Move method to move methods over from old to new . start with the lower level methods ( called rather than calling )  and build to the higher level
+  * Compile and test after each move .
+  * Review and reduce the interface of each class .
+  -> if you did have a two way link examine and see wheter it can be made on way
+  * Decide whether to expose the new class . if you do expose the class , decide whether to expose it as a reference object as an immutable value object .
+  
+  
