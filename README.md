@@ -615,3 +615,23 @@ private double getIntersetRate () {
      return _type.setInterestRate(arg)  ;      
 }
 ```
+
+# Extract Class
+ - You have one class doing work that should be done by two .
+  Create a new class and move the relevant fields and methods from the old class into the new class .
+  
+  **Mechanics**
+  * Decide how to spilt the responsibilites of the class
+  * Create a new class to express the split off resposibilites 
+  -> if the responsibilites of the old class no longer match its name rename the old class
+  * Make link between the old to the new class
+  -> you may need a two way link but don't make the back link until you find you need it .
+  * Use Move field on each field you wish to move .
+  * Compile and test after each move .
+  * Use Move method to move methods over from old to new . start with the lower level methods ( called rather than calling )  and build to the higher level
+  * Compile and test after each move .
+  * Review and reduce the interface of each class .
+  -> if you did have a two way link examine and see wheter it can be made on way
+  * Decide whether to expose the new class . if you do expose the class , decide whether to expose it as a reference object as an immutable value object .
+  
+  
