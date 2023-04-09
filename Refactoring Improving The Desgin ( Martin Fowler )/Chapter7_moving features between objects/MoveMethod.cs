@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.Chapter6
+namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.Chapter7_moving_features_between_objects
+
 {
-   public class MoveMethod
+    public class MoveMethod
     {
         public void Main()
         {
