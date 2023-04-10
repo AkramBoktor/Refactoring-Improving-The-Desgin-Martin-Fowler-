@@ -752,10 +752,10 @@ Delegae all these methods to the source class.
                 person martin = new person();
                 martin.getOfficeTelephone().setAreaCode("782");
 
-            /* After Inline class */
-            personAfter martinAfter = new personAfter();
-            martinAfter.setAreaCode("782");
-        }
+              /* After Inline class */
+              personAfter martinAfter = new personAfter();
+              martinAfter.setAreaCode("782");
+            }
 
         #region Before Inline class 
 
@@ -809,41 +809,41 @@ Delegae all these methods to the source class.
 
         #region After Inline class 
 
-        public class personAfter
-        {
-            private TelephoneNumber telephoneNumber = new TelephoneNumber();
-            private string _name;
-            public string getName()
-            {
-                return _name;
-            }
-            public string getTelephoneNumber()
-            {
-                return telephoneNumber.getTelephoneNumber();
-            }
-            public TelephoneNumber getOfficeTelephone()
-            {
-                return telephoneNumber;
-            }
+         public class personAfter
+         {
+             private TelephoneNumber telephoneNumber = new TelephoneNumber();
+             private string _name;
+             public string getName()
+             {
+                 return _name;
+             }
+             public string getTelephoneNumber()
+             {
+                 return telephoneNumber.getTelephoneNumber();
+             }
+             public TelephoneNumber getOfficeTelephone()
+             {
+                 return telephoneNumber;
+             }
 
-            public string getAreaCode()
-            {
-                return telephoneNumber.getAreaCode();
-            }
-            public void setAreaCode(string args)
-            {
-                telephoneNumber.setAreaCode(args);
-            }
+             public string getAreaCode()
+             {
+                 return telephoneNumber.getAreaCode();
+             }
+             public void setAreaCode(string args)
+             {
+                 telephoneNumber.setAreaCode(args);
+             }
 
-            public string getNumber()
-            {
-                return telephoneNumber.getNumber();
-            }
-            public void setNumber(string args)
-            {
-                telephoneNumber.setNumber(args);
-            }
-        }
+             public string getNumber()
+             {
+                 return telephoneNumber.getNumber();
+             }
+             public void setNumber(string args)
+             {
+                 telephoneNumber.setNumber(args);
+             }
+         }
 
         #endregion
 
