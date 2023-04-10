@@ -633,5 +633,220 @@ private double getIntersetRate () {
   * Review and reduce the interface of each class .
   -> if you did have a two way link examine and see wheter it can be made on way
   * Decide whether to expose the new class . if you do expose the class , decide whether to expose it as a reference object as an immutable value object .
+  * 
+  ```ruby
+      public class ExtractClass
+    {
+        public void Main()
+        {
+
+        }
+
+        #region Before extract class 
+
+        public class Person
+        {
+            private string _name;
+            private string _officeAreaCode;
+            private string _officeNumber;
+            public string getName()
+            {
+                return _name;
+            }
+            public string getTelephoneNumber()
+            {
+                return ("(" + _officeAreaCode + ")") + _officeNumber;
+            }
+            public string getOfficeAreaCode()
+            {
+                return _officeAreaCode;
+            }
+            public string getOfficeNumber()
+            {
+                return _officeNumber;
+            }
+            public void setOfficeAreaCode(string args)
+            {
+                _officeAreaCode = args;
+            }
+            public void setOfficeNumber(string args)
+            {
+                _officeNumber = args;
+            }
+
+        }
+        #endregion
+
+        #region After Move Method 
+        public class TelephoneNumber
+        {
+            private string _areaCode;
+            private string _Number;
+
+            public string getAreaCode()
+            {
+                return _areaCode;
+            }
+            public void setNumber(string args)
+            {
+                _Number = args;
+            }
+
+            public string getNumber()
+            {
+                return _Number;
+            }
+            public void setAreaCode(string args)
+            {
+                _areaCode = args;
+            }
+            public string getTelephoneNumber()
+            {
+                return ("(" + _areaCode + ")") + _Number;
+            }
+        }
+
+        /* By use move field and move method */
+        public class personAfter
+        {
+            private TelephoneNumber telephoneNumber = new TelephoneNumber();
+            private string _name;
+            public string getName()
+            {
+                return _name;
+            }
+            public string getTelephoneNumber()
+            {
+                return telephoneNumber.getTelephoneNumber();
+            }
+        }
+        #endregion
+    }
+
+  ```
   
-  
+# Inline Class
+- A class isn't doing very much . Move all its features into another class and delete it .
+
+**Motivation**
+
+Inline class is the reverse of extract class . I use inline class if a class is no longer pulling its weight and shouldn't be around any more . often this is the result of thr refactoring that moves other responsibilites out of the class so there is little left . then i want to fold this class into another class , picking one that seems to use the runt class the most .
+
+# Mechanics
+
+* Declare the public protocol of the source class onto the absorbing class .
+Delegae all these methods to the source class. 
+-> if a separate interface makes semse for the source class methods , use exract interface before inlining . 
+* Change all reference from the source class to the absorbing class.
+-> Declare the source class private to remove out-of-package reference Also change the name of the source class so the compiler catches any dangling reference to the source class .
+* Compile and test .
+* Use  *Move method and Move Filed* to move features from the source class to the ansorbing class until there is nothing left .
+* Hold a short , simple funeral service .
+```ruby
+    public class InlineClass
+    {
+        
+            public void Main()
+            {
+                /* Before Inline class */
+                person martin = new person();
+                martin.getOfficeTelephone().setAreaCode("782");
+
+              /* After Inline class */
+              personAfter martinAfter = new personAfter();
+              martinAfter.setAreaCode("782");
+            }
+
+        #region Before Inline class 
+
+            public class TelephoneNumber
+            {
+                private string _areaCode;
+                private string _Number;
+
+                public string getAreaCode()
+                {
+                    return _areaCode;
+                }
+                public void setNumber(string args)
+                {
+                    _Number = args;
+                }
+
+                public string getNumber()
+                {
+                    return _Number;
+                }
+                public void setAreaCode(string args)
+                {
+                    _areaCode = args;
+                }
+                public string getTelephoneNumber()
+                {
+                    return ("(" + _areaCode + ")") + _Number;
+                }
+            }
+
+            /* By use move field and move method */
+            public class person
+            {
+                private TelephoneNumber telephoneNumber = new TelephoneNumber();
+                private string _name;
+                public string getName()
+                {
+                    return _name;
+                }
+                public string getTelephoneNumber()
+                {
+                    return telephoneNumber.getTelephoneNumber();
+                }
+                public TelephoneNumber getOfficeTelephone()
+                {
+                    return telephoneNumber;
+                }
+            }
+        #endregion
+
+        #region After Inline class 
+
+         public class personAfter
+         {
+             private TelephoneNumber telephoneNumber = new TelephoneNumber();
+             private string _name;
+             public string getName()
+             {
+                 return _name;
+             }
+             public string getTelephoneNumber()
+             {
+                 return telephoneNumber.getTelephoneNumber();
+             }
+             public TelephoneNumber getOfficeTelephone()
+             {
+                 return telephoneNumber;
+             }
+
+             public string getAreaCode()
+             {
+                 return telephoneNumber.getAreaCode();
+             }
+             public void setAreaCode(string args)
+             {
+                 telephoneNumber.setAreaCode(args);
+             }
+
+             public string getNumber()
+             {
+                 return telephoneNumber.getNumber();
+             }
+             public void setNumber(string args)
+             {
+                 telephoneNumber.setNumber(args);
+             }
+         }
+
+        #endregion
+
+    }
+
+```
