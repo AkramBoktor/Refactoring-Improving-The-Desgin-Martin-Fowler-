@@ -635,3 +635,20 @@ private double getIntersetRate () {
   * Decide whether to expose the new class . if you do expose the class , decide whether to expose it as a reference object as an immutable value object .
   
   
+# Inline Class
+- A class isn't doing very much . Move all its features into another class and delete it .
+
+**Motivation**
+
+Inline class is the reverse of extract class . I use inline class if a class is no longer pulling its weight and shouldn't be around any more . often this is the result of thr refactoring that moves other responsibilites out of the class so there is little left . then i want to fold this class into another class , picking one that seems to use the runt class the most .
+
+# Mechanics
+
+* Declare the public protocol of the source class onto the absorbing class .
+Delegae all these methods to the source class. 
+-> if a separate interface makes semse for the source class methods , use exract interface before inlining . 
+* Change all reference from the source class to the absorbing class.
+-> Declare the source class private to remove out-of-package reference Also change the name of the source class so the compiler catches any dangling reference to the source class .
+* Compile and test .
+* Use  *Move method and Move Filed* to move features from the source class to the ansorbing class until there is nothing left .
+* Hold a short , simple funeral service .
