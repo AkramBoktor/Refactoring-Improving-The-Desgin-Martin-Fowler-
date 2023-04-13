@@ -850,3 +850,14 @@ Delegae all these methods to the source class.
     }
 
 ```
+# Remove Middle Man
+* Aclass is doing toomuch simpledelegation.
+ Get the client to call the delegate directly . 
+ 
+# Mechanics
+
+* Create an accessorfor the delegate
+* For each client use of delegate method , remove the method from the server and replace the call on the client to call method on the delegate .
+* Compile and test after each method .
+
+
