@@ -860,4 +860,28 @@ Delegae all these methods to the source class.
 * For each client use of delegate method , remove the method from the server and replace the call on the client to call method on the delegate .
 * Compile and test after each method .
 
+# Chapter 8 Organization Data
 
+# Self Encapsulate Field
+
+* You are accessing a field directly , but coupling to the field is becoming awkward .
+* Create getting and setting method for the field and use only those to access the field .
+
+* Before self encapsulate field
+  - private int _low , _high;
+  boolean includes ( int arg ) {
+   return arg >= _low && arg <= _high;
+  }
+* After self encapsulate field
+ - private int _low , _high;
+  boolean includes ( int arg ) {
+   return arg >= getlow() && arg <= gethigh();
+  }
+  int getlow(){
+    return _low;
+  }
+ int gethigh(){
+    return _high;
+  }
+  
+  
