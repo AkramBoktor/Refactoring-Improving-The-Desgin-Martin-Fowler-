@@ -890,3 +890,12 @@ Delegae all these methods to the source class.
 * the most important of indirect variable access are that it allows a sub class to ovveride how to get that information with a method and that it supports more flexiability in managing the data , such as lazy intialization which intializes the value only when you need to use it .
 
 * The advantage of direct access is that the code is easier to read . you don't need to stop and say ``this is getting method``
+
+# Mechanics
+* Create a getting and setting method for the field .
+* find all refernece to the field and replace them with getting or setting method .
+* => Replace access to the field with a call to the getting method , replace assignments with a call to setting method .
+* Make the field private .
+* Double check you have caught all refernece . 
+* compile and test .
+
