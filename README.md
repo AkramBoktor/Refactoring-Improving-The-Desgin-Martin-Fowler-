@@ -873,7 +873,7 @@ Delegae all these methods to the source class.
   boolean includes ( int arg ) {
    return arg >= _low && arg <= _high;
   }
-* After self encapsulate field
+// After self encapsulate field
  - private int _low , _high;
   boolean includes ( int arg ) {
    return arg >= getlow() && arg <= gethigh();
@@ -884,9 +884,11 @@ Delegae all these methods to the source class.
  int gethigh(){
     return _high;
   }
+  
   ```
   
   # Motivation
+  
   * when it comes to accessing fields , there are twoschools of thought , One is that whithin the class where the variables is defined , you should access the       variables freely **(direct variable access)** the other school is that even within the class you should always use accessors **(Indirect variable access)**
 
 * the most important of indirect variable access are that it allows a sub class to ovveride how to get that information with a method and that it supports more flexiability in managing the data , such as lazy intialization which intializes the value only when you need to use it .
