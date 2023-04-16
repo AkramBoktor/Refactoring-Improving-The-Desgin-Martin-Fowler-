@@ -873,11 +873,10 @@ Delegae all these methods to the source class.
   boolean includes ( int arg ) {
    return arg >= _low && arg <= _high;
   }
-  ```
-  After self encapsulate field
+  
+    After self encapsulate field
     
-   ``` ruby
- private int _low , _high;
+   private int _low , _high;
   boolean includes ( int arg ) {
    return arg >= getlow() && arg <= gethigh();
   }
@@ -888,6 +887,7 @@ Delegae all these methods to the source class.
     return _high;
   }
   ```
+
   # Motivation
   
   * when it comes to accessing fields , there are twoschools of thought , One is that whithin the class where the variables is defined , you should access the       variables freely **(direct variable access)** the other school is that even within the class you should always use accessors **(Indirect variable access)**
