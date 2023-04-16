@@ -873,7 +873,10 @@ Delegae all these methods to the source class.
   boolean includes ( int arg ) {
    return arg >= _low && arg <= _high;
   }
+  ```
+  ``` ruby
 // After self encapsulate field
+ 
  - private int _low , _high;
   boolean includes ( int arg ) {
    return arg >= getlow() && arg <= gethigh();
@@ -884,7 +887,6 @@ Delegae all these methods to the source class.
  int gethigh(){
     return _high;
   }
-  
   ```
   
   # Motivation
