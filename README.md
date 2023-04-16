@@ -867,15 +867,20 @@ Delegae all these methods to the source class.
 * You are accessing a field directly , but coupling to the field is becoming awkward .
 * Create getting and setting method for the field and use only those to access the field .
 
-* Before self encapsulate field
+
+Before self encapsulate field
+
   ``` ruby
   - private int _low , _high;
   boolean includes ( int arg ) {
    return arg >= _low && arg <= _high;
   }
   
+```
+
   //  After self encapsulate field
-    
+  
+  ``` ruby
    private int _low , _high;
    
   boolean includes ( int arg ) {
@@ -891,7 +896,7 @@ Delegae all these methods to the source class.
   
   ```
  
- # Motivation
+# Motivation
   
   * when it comes to accessing fields , there are twoschools of thought , One is that whithin the class where the variables is defined , you should access the       variables freely **(direct variable access)** the other school is that even within the class you should always use accessors **(Indirect variable access)**
 
@@ -900,6 +905,7 @@ Delegae all these methods to the source class.
 * The advantage of direct access is that the code is easier to read . you don't need to stop and say ``this is getting method``
 
 # Mechanics
+
 * Create a getting and setting method for the field .
 
 * find all refernece to the field and replace them with getting or setting method .
