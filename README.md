@@ -918,5 +918,17 @@ Before self encapsulate field
 
 * compile and test .
 
+# Replace Data Value with object
 
+* You have a data item that needs additional data or behavior .
+* Turn the data item into an object .
 
+# Mechanics
+
+* Create the class for the value . Give it a final of the same type as the value in the source class . Add getter and a constructor that takes the field as an argument
+* Compile
+* Change the type of the field in the source class to the new class .
+* Change the getter in the source class to call the getter in the new class .
+* If the field is metioned in the source class constructor , assign the field using the constructor of the new class .
+* Change the setting method to create a new instance of the new class .
+* Compile and test .
