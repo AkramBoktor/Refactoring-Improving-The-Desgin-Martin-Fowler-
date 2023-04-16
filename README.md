@@ -890,7 +890,8 @@ Delegae all these methods to the source class.
   }
   
   ```
-  # Motivation
+ 
+ # Motivation
   
   * when it comes to accessing fields , there are twoschools of thought , One is that whithin the class where the variables is defined , you should access the       variables freely **(direct variable access)** the other school is that even within the class you should always use accessors **(Indirect variable access)**
 
