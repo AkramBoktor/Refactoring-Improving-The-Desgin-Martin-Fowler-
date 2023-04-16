@@ -874,20 +874,22 @@ Delegae all these methods to the source class.
    return arg >= _low && arg <= _high;
   }
   
-    After self encapsulate field
+  //  After self encapsulate field
     
    private int _low , _high;
+   
   boolean includes ( int arg ) {
    return arg >= getlow() && arg <= gethigh();
   }
+  
   int getlow(){
     return _low;
   }
  int gethigh(){
     return _high;
   }
+  
   ```
-
   # Motivation
   
   * when it comes to accessing fields , there are twoschools of thought , One is that whithin the class where the variables is defined , you should access the       variables freely **(direct variable access)** the other school is that even within the class you should always use accessors **(Indirect variable access)**
@@ -898,10 +900,15 @@ Delegae all these methods to the source class.
 
 # Mechanics
 * Create a getting and setting method for the field .
+
 * find all refernece to the field and replace them with getting or setting method .
+
 * => Replace access to the field with a call to the getting method , replace assignments with a call to setting method .
+
 * Make the field private .
+
 * Double check you have caught all refernece . 
+
 * compile and test .
 
 
