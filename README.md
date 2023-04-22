@@ -948,3 +948,17 @@ row.setName("liverpool");
 row.setwins("15")
 ```
 
+# Mechanics
+
+* Create new class to represent the information in the array . Give it a public field for the array
+* Change all users of the array to use the new class
+* Compile and test 
+* One by one add getter and setters for each element of the array . Name the accessors after the purpose of the array element . Change the clients to use the accessors . Compile and test after each change .
+* When all the array accesses are replaced by methods , make the array private
+* Compile 
+* For each element of the arrray , create a field in the class and change the accessors to use the field.
+* Compile and test after each element is changed . 
+* When all elements have replaced with fields , delete the array .
+
+
+
