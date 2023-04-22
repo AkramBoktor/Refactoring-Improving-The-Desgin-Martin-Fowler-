@@ -959,6 +959,36 @@ row.setwins("15")
 * For each element of the arrray , create a field in the class and change the accessors to use the field.
 * Compile and test after each element is changed . 
 * When all elements have replaced with fields , delete the array .
+# Examples
+``` ruby
+String [] row = new String[3];
+row[0] = "LiverPool";
+row[1] = "15";
 
+** To turn this into and object , i begin by creating a class ** 
+Class Performance {
+public String[] _date = new String[3];
 
+// Now i find the spots that create and access the array . when the array is created i use
+Performance row = new Performance () ;
+row._data[0] = "LiverPool";
+row._data[1] = "15";
 
+String Name = row_data[0];
+int wins  = int.ParseInt(row_data[1]);
+
+// One by one i add more meaningful getters and setters . i start with the namr 
+
+public String getName(){
+ return _date[0];
+}
+public void setName(string args ){
+ _data[0] = Name ;
+}
+// I alter the users of that row to use getters and setters instead
+row.setName("LiverPool");
+row._data[1] = "15";
+
+String Name = row.getName();
+int wins  = int.ParseInt(row_data[1]);
+```
