@@ -932,3 +932,19 @@ Before self encapsulate field
 * If the field is metioned in the source class constructor , assign the field using the constructor of the new class .
 * Change the setting method to create a new instance of the new class .
 * Compile and test .
+
+# Replace Array with Object
+* you have an array in which certian element mean differnet things .
+* Replace the array with an that has a field for each element  . 
+``` ruby
+String [] row = new String[3];
+row[0] = "LiverPool";
+row[1] = "15";
+
+Transfer to
+
+Performance row = new Performance();
+row.setName("liverpool");
+row.setwins("15")
+```
+
