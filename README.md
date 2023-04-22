@@ -983,7 +983,7 @@ public String getName(){
  return _date[0];
 }
 public void setName(string args ){
- _data[0] = Name ;
+ _data[0] = args ;
 }
 // I alter the users of that row to use getters and setters instead
 row.setName("LiverPool");
@@ -991,4 +991,32 @@ row._data[1] = "15";
 
 String Name = row.getName();
 int wins  = int.ParseInt(row_data[1]);
+
+// I can do the same with the second element to make matters easier , i can encapsulate the data type conversion 
+public int getWin(){
+ returnint.ParseInt(_date[0]);
+}
+public void setName(string args ){
+ _data[1] = args ;
+}
+
+##################
+
+Client code
+row.setWin("14");
+int win =row.getWin();
+
+// Once i've done with all element i can make the array as private . 
+the most important part of this refactoring changing the interface , is now done . it's also useful howeever to replace the array internally . i can do this by adding a field for each arrayy element and changing the accessors to use it .
+
+Class Performace  {
+private string Name ;
+public String getName(){
+ return Name
+}
+public void setName(string args ){
+ Name = args ;
+  }
+}
+I do this for all element of the array when i've done them all i delete the array .
 ```
