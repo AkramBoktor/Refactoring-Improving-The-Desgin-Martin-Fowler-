@@ -1074,28 +1074,28 @@ set friendOrders() {
   }
 }
 Class Customer {
-void addOrder(Order arg){
+Void addOrder(Order arg){
 arg.setCustomer(this);
 }
 }
 ** if an order have many customer so you have many to many relationship and the methods look like this **
 Class Order //controlling method
-void addCustomer (customer arg ){
+Void addCustomer (customer arg ){
 arg.friendOrder().add(this);
 _customer.add(arg);
 }
 
-void removeCustomer (customer arg ){
+Void removeCustomer (customer arg ){
 arg.friendOrder().remove(this);
 _customer.remove(arg);
 }
 
 Class Order 
-void addOrder (Order arg ){
+Void addOrder (Order arg ){
 arg.addCustomer(this);
 }
 
-void removeOrder (Order arg ){
+Void removeOrder (Order arg ){
 arg.removeCustomer(this);
 }
 ```
