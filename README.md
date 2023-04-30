@@ -1043,4 +1043,15 @@ Class Order {
  Customer _customer ;
 }
 
+// Add Customer you can add a list of order 
+Class Customer {
+ private Set _orders = new HasSet();
+}
 ```
+Now i need to decide which class will take charge of the association . I prefer to let one class take charge because it keeps all logic for manipulkating the association in one place . My descion process runs as follows .
+
+1 - if both objects are reference objects and the association is one to many , then the object that has the one reference is the controller . ( that is , if one customer has many orders , the order controls the association.)
+2 - if one object is a component of the order the composite should control the association.
+3 - if both objects are reference objects and the association is many to many it doesn't matter whether the order or the customewr controls the association .
+
+Because the order will take charge , I need to add helper methof to the customer that allows direct access to the orders collection . the order modifier will use this to synchronize both sets of pointer . 
