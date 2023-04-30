@@ -1020,3 +1020,7 @@ public void setName(string args ){
 }
 I do this for all element of the array when i've done them all i delete the array .
 ```
+# Change Unidirection Association to Bidirrection
+* You have two classes tat need to use each others features but there is only a one way link .  
+  Add back pointer , and change modifiers to update both sets .
+  **Order** have relationship with **customer** ( Order belong to customer and customer can have many orders ) 
