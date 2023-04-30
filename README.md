@@ -1023,4 +1023,24 @@ I do this for all element of the array when i've done them all i delete the arra
 # Change Unidirection Association to Bidirrection
 * You have two classes tat need to use each others features but there is only a one way link .  
   Add back pointer , and change modifiers to update both sets .
-  **Order** have relationship with **customer** ( Order belong to customer and customer can have many orders ) 
+  **Order** have relationship with **Customer** --------> ( Order belong to customer and customer can have many orders ) .
+  
+# Mechanics
+* Add a field for the back pointer .
+* Decide which class will control the association . 
+* Create a helper method on the noncontrolling side of the association Name this method to clearly indicates its restricted use .
+* if the existing modifiers is on the controlling side , modify it to update the back pointer . 
+* if the existing modifier is on the controlled side , create a controlling method on the controlling side and call it from the existing modifier .
+``` ruby
+Class Order {
+ Customer getCustomer(){
+   return _customer ; 
+ }
+ void SetCustomer (Customer arg){
+   _customer = arg;
+ }
+ 
+ Customer _customer ;
+}
+
+```
