@@ -1055,3 +1055,22 @@ Now i need to decide which class will take charge of the association . I prefer 
 3 - if both objects are reference objects and the association is many to many it doesn't matter whether the order or the customewr controls the association .
 
 Because the order will take charge , I need to add helper methof to the customer that allows direct access to the orders collection . the order modifier will use this to synchronize both sets of pointer . 
+
+``` ruby
+Class Customer {
+private Set _orders = new HashSet();
+set friendOrders() {
+  /** Should only bre used by order when modifying the association */
+  return _orders;
+  }
+  
+  /** Now I  update the modifier to update the back pointers : */
+  Class Order {
+   Void SetCustomer(Customer arg){
+    if(_customer!=null) _customer.friendOrders().remove(this);
+    _customer = arg;
+    if(_Cusomter!=null) _customer.friendOrders().add(this);
+   }
+  }
+}
+```
