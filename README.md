@@ -60,6 +60,7 @@ name in one hirerchy are the same as the prefix in another hirearchy .
 ** To Prevent this problem ** 
 the instance of one hierarchy refer to instance of one hierarchy refer to instances of the other . 
 **Using Move Method & Move Field prevent this happened**
+
 10 - Message Chain 
 You see message chain when a clinet asks one object for another object , which the client then asks for yet another object , which the clien then asks for yet another another object .
 Navigation this way means the client is coupled to the structure of the navigation 
@@ -164,6 +165,7 @@ Format of refactorings .  each refactoring has five parts as follow
   **Motivation** : Extract Method is one of the most common refactorings i do . I look at the method that is too long or look at code that needs a comment to understand its purpose . I then turn that fragement of code into its own method .
   **Prefer** : - Short - well named method for serval reasons 
   1 - it increases the chances that other methods can use a method when the methid is finely gained 
+  
   2 - it allows the higher-level methods to read more like series of comments
   
   **Mechanics**
@@ -681,6 +683,7 @@ private double getIntersetRate () {
         public class TelephoneNumber
         {
             private string _areaCode;
+            
             private string _Number;
 
             public string getAreaCode()
@@ -1051,7 +1054,9 @@ Class Customer {
 Now i need to decide which class will take charge of the association . I prefer to let one class take charge because it keeps all logic for manipulkating the association in one place . My descion process runs as follows .
 
 1 - if both objects are reference objects and the association is one to many , then the object that has the one reference is the controller . ( that is , if one customer has many orders , the order controls the association.)
+
 2 - if one object is a component of the order the composite should control the association.
+
 3 - if both objects are reference objects and the association is many to many it doesn't matter whether the order or the customewr controls the association .
 
 Because the order will take charge , I need to add helper methof to the customer that allows direct access to the orders collection . the order modifier will use this to synchronize both sets of pointer . 
