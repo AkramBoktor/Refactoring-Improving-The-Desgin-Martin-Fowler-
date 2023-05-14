@@ -1104,3 +1104,51 @@ arg.removeCustomer(this);
  ** Drop the unneeded end of the association
   - Order has one customer and customer can be refer to many orders . 
   
+  # Replace Magic Number with Symbolic constant 
+ - You have a literal number with a Particular meaning .
+ - Create a constant , name it after the meaning , and replce the number with it .
+ 
+ # Mechanics
+ 1 - Declare a constant and set it to the value of the magic number .
+ 2 - Find all occurrences of the magic number .
+ 3 - See whether the magic number matches the usage of the constant of it does change the mafgic number to use the constant .
+ 4 - Compile .
+ 
+ ``` ruby
+   public class ReplaceMagicNumber
+    {
+        public void Main()
+        {
+            /*  Before Replace Magic Number */
+            Symbolic_Constant symbole = new Symbolic_Constant();
+            Console.WriteLine("ReplaceMagicNumber "+symbole.potentialEnergy(1, 2));
+
+            /* After Replace Magic Number */
+            Symbolic_ConstantAfter symboleAfter = new Symbolic_ConstantAfter();
+            Console.WriteLine("ReplaceMagicNumber "+symboleAfter.potentialEnergy(1, 2));
+        }
+
+        #region Before Replace Magic Number
+
+        public class Symbolic_Constant
+        {
+           public double potentialEnergy(double mass , double height)
+            {
+                return mass * 5 * height;
+            }
+        }
+        #endregion
+
+        #region After Replace Magic Number
+        public class Symbolic_ConstantAfter
+        {
+            private const int weight = 5;
+            public double potentialEnergy(double mass, double height)
+            {
+                return mass * weight * height;
+            }
+        }
+        #endregion
+    }
+
+ ```
