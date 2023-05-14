@@ -1,4 +1,5 @@
 ﻿using Refactoring_Improving_The_Desgin___Martin_Fowler__.Chapter6;
+using Refactoring_Improving_The_Desgin___Martin_Fowler__.Chapter8_OrgnizationData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,10 @@ namespace Refactoring_Improving_The_Desgin___Martin_Fowler__.FirstChapter.Movies
 
             Substitute_Algorithm substitute_Algorithm = new Substitute_Algorithm();
             substitute_Algorithm.Main();
+
+
+            ReplaceMagicNumber replaceMagicNumber = new ReplaceMagicNumber();
+            replaceMagicNumber.Main();
             #endregion
         }
     }
