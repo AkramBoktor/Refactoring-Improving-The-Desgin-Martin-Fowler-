@@ -1190,3 +1190,4 @@ arg.removeCustomer(this);
 10 - Change the name of the current getter and add a new getter to return an enumeration . find users of the old getter and change them to use one of the new methods .
 
 11 - Compile nd test .
+
