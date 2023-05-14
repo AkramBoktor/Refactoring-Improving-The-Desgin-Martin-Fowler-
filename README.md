@@ -1110,8 +1110,11 @@ arg.removeCustomer(this);
  
  # Mechanics
  1 - Declare a constant and set it to the value of the magic number .
+ 
  2 - Find all occurrences of the magic number .
+ 
  3 - See whether the magic number matches the usage of the constant of it does change the mafgic number to use the constant .
+ 
  4 - Compile .
  
  ``` ruby
