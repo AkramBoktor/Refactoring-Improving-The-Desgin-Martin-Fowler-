@@ -1155,9 +1155,10 @@ arg.removeCustomer(this);
     }
 
  ```
- # Encapsulate field
+ # Encapsulate Field
  - There is a public field . 
- - Make it private and provide accessors
+ - Make it private and provide accessors .
+ - 
  ``` ruby
  public string _name ;
  
@@ -1165,3 +1166,17 @@ arg.removeCustomer(this);
  public string getName() { return _name; }
  public void setName(string valueName){ _name = valueName ;}
  ```
+# Encapsulation Collection
+- A Method returns collection -> Make it return a read only view and provide add/removemethods
+# Mechanics
+1 - Add an add and remove method for collection 
+2 - Intialize the field to an empty collection .
+3 - Compile .
+4 - Find all callers of the setting method . Either the setting methid to use the add and remove operation or have the clients call those operation insted .
+5 - Compile and test .
+6 - Find all users of the getter that modify the collection . Change them to use the add and remove methods . compile and test after each change .
+7 - When all users of the getter that Modify have been changed , modify the getter to return a read only view of the collection .
+8 - Compile and test .
+9 - Find the users of the getter . look for code that should be on the host object . use extract method and move method to move the code to the host object .
+10 - Change the name of the current getter and add a new getter to return an enumeration . find users of the old getter and change them to use one of the new methods .
+11 - Compile nd test .
