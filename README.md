@@ -1155,3 +1155,13 @@ arg.removeCustomer(this);
     }
 
  ```
+ # Encapsulate field
+ - There is a public field . 
+ - Make it private and provide accessors
+ ``` ruby
+ public string _name ;
+ 
+ private string _name ;
+ public string getName() { return _name; }
+ public void setName(string valueName){ _name = valueName ;}
+ ```
