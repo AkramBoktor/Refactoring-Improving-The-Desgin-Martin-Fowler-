@@ -850,3 +850,308 @@ Delegae all these methods to the source class.
     }
 
 ```
+# Remove Middle Man
+* Aclass is doing toomuch simpledelegation.
+ Get the client to call the delegate directly . 
+ 
+# Mechanics
+
+* Create an accessorfor the delegate
+* For each client use of delegate method , remove the method from the server and replace the call on the client to call method on the delegate .
+* Compile and test after each method .
+
+# Chapter 8 Organization Data
+
+# Self Encapsulate Field
+
+* You are accessing a field directly , but coupling to the field is becoming awkward .
+* Create getting and setting method for the field and use only those to access the field .
+
+
+Before self encapsulate field
+
+  ``` ruby
+  - private int _low , _high;
+  boolean includes ( int arg ) {
+   return arg >= _low && arg <= _high;
+  }
+  
+```
+
+  //  After self encapsulate field
+  
+  ``` ruby
+   private int _low , _high;
+   
+  boolean includes ( int arg ) {
+   return arg >= getlow() && arg <= gethigh();
+  }
+  
+  int getlow(){
+    return _low;
+  }
+ int gethigh(){
+    return _high;
+  }
+  
+  ```
+ 
+# Motivation
+  
+  * when it comes to accessing fields , there are twoschools of thought , One is that whithin the class where the variables is defined , you should access the       variables freely **(direct variable access)** the other school is that even within the class you should always use accessors **(Indirect variable access)**
+
+* the most important of indirect variable access are that it allows a sub class to ovveride how to get that information with a method and that it supports more flexiability in managing the data , such as lazy intialization which intializes the value only when you need to use it .
+
+* The advantage of direct access is that the code is easier to read . you don't need to stop and say ``this is getting method``
+
+# Mechanics
+
+* Create a getting and setting method for the field .
+
+* find all refernece to the field and replace them with getting or setting method .
+
+* => Replace access to the field with a call to the getting method , replace assignments with a call to setting method .
+
+* Make the field private .
+
+* Double check you have caught all refernece . 
+
+* compile and test .
+
+# Replace Data Value with object
+
+* You have a data item that needs additional data or behavior .
+* Turn the data item into an object .
+
+# Mechanics
+
+* Create the class for the value . Give it a final of the same type as the value in the source class . Add getter and a constructor that takes the field as an argument
+* Compile
+* Change the type of the field in the source class to the new class .
+* Change the getter in the source class to call the getter in the new class .
+* If the field is metioned in the source class constructor , assign the field using the constructor of the new class .
+* Change the setting method to create a new instance of the new class .
+* Compile and test .
+
+# Replace Array with Object
+* you have an array in which certian element mean differnet things .
+* Replace the array with an that has a field for each element  . 
+``` ruby
+String [] row = new String[3];
+row[0] = "LiverPool";
+row[1] = "15";
+
+Transfer to
+
+Performance row = new Performance();
+row.setName("liverpool");
+row.setwins("15")
+```
+
+# Mechanics
+
+* Create new class to represent the information in the array . Give it a public field for the array
+* Change all users of the array to use the new class
+* Compile and test 
+* One by one add getter and setters for each element of the array . Name the accessors after the purpose of the array element . Change the clients to use the accessors . Compile and test after each change .
+* When all the array accesses are replaced by methods , make the array private
+* Compile 
+* For each element of the arrray , create a field in the class and change the accessors to use the field.
+* Compile and test after each element is changed . 
+* When all elements have replaced with fields , delete the array .
+# Examples
+``` ruby
+String [] row = new String[3];
+row[0] = "LiverPool";
+row[1] = "15";
+
+** To turn this into and object , i begin by creating a class ** 
+Class Performance {
+public String[] _date = new String[3];
+
+// Now i find the spots that create and access the array . when the array is created i use
+Performance row = new Performance () ;
+row._data[0] = "LiverPool";
+row._data[1] = "15";
+
+String Name = row_data[0];
+int wins  = int.ParseInt(row_data[1]);
+
+// One by one i add more meaningful getters and setters . i start with the namr 
+
+public String getName(){
+ return _date[0];
+}
+public void setName(string args ){
+ _data[0] = args ;
+}
+// I alter the users of that row to use getters and setters instead
+row.setName("LiverPool");
+row._data[1] = "15";
+
+String Name = row.getName();
+int wins  = int.ParseInt(row_data[1]);
+
+// I can do the same with the second element to make matters easier , i can encapsulate the data type conversion 
+public int getWin(){
+ returnint.ParseInt(_date[0]);
+}
+public void setName(string args ){
+ _data[1] = args ;
+}
+
+##################
+
+Client code
+row.setWin("14");
+int win =row.getWin();
+
+// Once i've done with all element i can make the array as private . 
+the most important part of this refactoring changing the interface , is now done . it's also useful howeever to replace the array internally . i can do this by adding a field for each arrayy element and changing the accessors to use it .
+
+Class Performace  {
+private string Name ;
+public String getName(){
+ return Name
+}
+public void setName(string args ){
+ Name = args ;
+  }
+}
+I do this for all element of the array when i've done them all i delete the array .
+```
+# Change Unidirection Association to Bidirrection
+* You have two classes tat need to use each others features but there is only a one way link .  
+  Add back pointer , and change modifiers to update both sets .
+  **Order** have relationship with **Customer** --------> ( Order belong to customer and customer can have many orders ) .
+  
+# Mechanics
+* Add a field for the back pointer .
+* Decide which class will control the association . 
+* Create a helper method on the noncontrolling side of the association Name this method to clearly indicates its restricted use .
+* if the existing modifiers is on the controlling side , modify it to update the back pointer . 
+* if the existing modifier is on the controlled side , create a controlling method on the controlling side and call it from the existing modifier .
+``` ruby
+Class Order {
+ Customer getCustomer(){
+   return _customer ; 
+ }
+ void SetCustomer (Customer arg){
+   _customer = arg;
+ }
+ 
+ Customer _customer ;
+}
+
+// Add Customer you can add a list of order 
+Class Customer {
+ private Set _orders = new HasSet();
+}
+```
+Now i need to decide which class will take charge of the association . I prefer to let one class take charge because it keeps all logic for manipulkating the association in one place . My descion process runs as follows .
+
+1 - if both objects are reference objects and the association is one to many , then the object that has the one reference is the controller . ( that is , if one customer has many orders , the order controls the association.)
+2 - if one object is a component of the order the composite should control the association.
+3 - if both objects are reference objects and the association is many to many it doesn't matter whether the order or the customewr controls the association .
+
+Because the order will take charge , I need to add helper methof to the customer that allows direct access to the orders collection . the order modifier will use this to synchronize both sets of pointer . 
+
+``` ruby
+Class Customer {
+private Set _orders = new HashSet();
+set friendOrders() {
+  /** Should only bre used by order when modifying the association */
+  return _orders;
+  }
+  
+  /** Now I  update the modifier to update the back pointers : */
+  Class Order {
+   Void SetCustomer(Customer arg){
+    if(_customer!=null) _customer.friendOrders().remove(this);
+    _customer = arg;
+    if(_Cusomter!=null) _customer.friendOrders().add(this);
+   }
+  }
+}
+Class Customer {
+Void addOrder(Order arg){
+arg.setCustomer(this);
+}
+}
+** if an order have many customer so you have many to many relationship and the methods look like this **
+Class Order //controlling method
+Void addCustomer (customer arg ){
+arg.friendOrder().add(this);
+_customer.add(arg);
+}
+
+Void removeCustomer (customer arg ){
+arg.friendOrder().remove(this);
+_customer.remove(arg);
+}
+
+Class Order 
+Void addOrder (Order arg ){
+arg.addCustomer(this);
+}
+
+Void removeOrder (Order arg ){
+arg.removeCustomer(this);
+}
+```
+# Change Bidirection Association to undirection 
+ - You have two way association but one class no longer needs featues from the order . 
+ ** Drop the unneeded end of the association
+  - Order has one customer and customer can be refer to many orders . 
+  
+  # Replace Magic Number with Symbolic constant 
+ - You have a literal number with a Particular meaning .
+ - Create a constant , name it after the meaning , and replce the number with it .
+ 
+ # Mechanics
+ 1 - Declare a constant and set it to the value of the magic number .
+ 
+ 2 - Find all occurrences of the magic number .
+ 
+ 3 - See whether the magic number matches the usage of the constant of it does change the mafgic number to use the constant .
+ 
+ 4 - Compile .
+ 
+ ``` ruby
+   public class ReplaceMagicNumber
+    {
+        public void Main()
+        {
+            /*  Before Replace Magic Number */
+            Symbolic_Constant symbole = new Symbolic_Constant();
+            Console.WriteLine("ReplaceMagicNumber "+symbole.potentialEnergy(1, 2));
+
+            /* After Replace Magic Number */
+            Symbolic_ConstantAfter symboleAfter = new Symbolic_ConstantAfter();
+            Console.WriteLine("ReplaceMagicNumber "+symboleAfter.potentialEnergy(1, 2));
+        }
+
+        #region Before Replace Magic Number
+
+        public class Symbolic_Constant
+        {
+           public double potentialEnergy(double mass , double height)
+            {
+                return mass * 5 * height;
+            }
+        }
+        #endregion
+
+        #region After Replace Magic Number
+        public class Symbolic_ConstantAfter
+        {
+            private const int weight = 5;
+            public double potentialEnergy(double mass, double height)
+            {
+                return mass * weight * height;
+            }
+        }
+        #endregion
+    }
+
+ ```
