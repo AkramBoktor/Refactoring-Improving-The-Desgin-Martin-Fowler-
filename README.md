@@ -1099,3 +1099,8 @@ Void removeOrder (Order arg ){
 arg.removeCustomer(this);
 }
 ```
+# Change Bidirection Association to undirection 
+ - You have two way association but one class no longer needs featues from the order . 
+ ** Drop the unneeded end of the association
+  - Order has one customer and customer can be refer to many orders . 
+  
